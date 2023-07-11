@@ -58,7 +58,7 @@ namespace SimpleMasterMind.Classes
 
         private void AskPlayerCombination()
         {
-            while(_playerMaxTry > 0)
+            while (_playerMaxTry > 0)
             {
                 _playerTimeAsked = 0;
 
