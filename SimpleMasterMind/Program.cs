@@ -1,10 +1,20 @@
-﻿namespace SimpleMasterMind
+﻿using SimpleMasterMind.Classes;
+
+namespace SimpleMasterMind
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static bool _isDebug = true;
+
+        static void Main()
         {
-            Console.WriteLine("Hello, World!");
+            MasterMind masterMind = new MasterMind();
+            masterMind.Game();
+
+            if(_isDebug)
+            {
+                masterMind.Debug();
+            }
         }
     }
 }
