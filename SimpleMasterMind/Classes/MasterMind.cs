@@ -4,16 +4,10 @@ namespace SimpleMasterMind.Classes
 {
     internal class MasterMind
     {
-        private Messages gameMessages = new Messages();
-        private Random random = new Random();
+        private readonly Messages gameMessages = new Messages();
+        private readonly Random random = new Random();
 
         private int _playerMaxTry = 10;
-        private int _playerTimeAsked;
-        private int _correctColors;
-        private int _misplacedColors;
-        private int _incorrectColors;
-        private char _playerReady;
-        private string? _playerInput;
         private Colors[]? _cpuCombination;
         private Colors[]? _playerCombination;
         private bool[]? _checkedPositions;
@@ -34,7 +28,7 @@ namespace SimpleMasterMind.Classes
         /// </summary>
         private void AskPlayerReady()
         {
-            _playerReady = Console.ReadLine()[0];
+            char _playerReady = Console.ReadLine()[0];
 
             if (_playerReady == 'Y' || _playerReady == 'y')
             {
@@ -72,7 +66,7 @@ namespace SimpleMasterMind.Classes
         {
             while (_playerMaxTry > 0)
             {
-                _playerTimeAsked = 0;
+                int _playerTimeAsked = 0;
 
                 if (!_gameWon)
                 {
@@ -82,7 +76,7 @@ namespace SimpleMasterMind.Classes
                     {
                         gameMessages.AskPlayerColor();
 
-                        _playerInput = Console.ReadLine();
+                        string _playerInput = Console.ReadLine();
                         _playerInput = _playerInput.ToLower();
 
                         foreach (string colorName in Enum.GetNames(typeof(Colors)))
@@ -113,9 +107,8 @@ namespace SimpleMasterMind.Classes
         /// </summary>
         private void TryPlayerCombination()
         {
-            _correctColors = 0;
-            _misplacedColors = 0;
-            _incorrectColors = 0;
+            int _correctColors = 0;
+            int _misplacedColors = 0;
 
             for (int i = 0; i < _playerCombination.Length; i++)
             {
@@ -142,7 +135,7 @@ namespace SimpleMasterMind.Classes
                 }
             }
 
-            _incorrectColors = _cpuCombination.Length - _correctColors - _misplacedColors;
+            int _incorrectColors = _cpuCombination.Length - _correctColors - _misplacedColors;
 
             if (_correctColors == _cpuCombination.Length && _misplacedColors == 0)
             {
